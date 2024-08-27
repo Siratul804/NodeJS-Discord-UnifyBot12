@@ -6,6 +6,31 @@ const commands = [
     name: "ping",
     description: "Replies with Pong!",
   },
+  {
+    name: "joke",
+    description: "Tells a random joke",
+  },
+  {
+    name: "meme",
+    description: "Sends a random meme",
+  },
+  {
+    name: "rps",
+    description: "Play Rock, Paper, Scissors",
+    options: [
+      {
+        name: "choice",
+        type: 3, // Correct type for STRING
+        description: "Your choice: rock, paper, or scissors",
+        required: true,
+        choices: [
+          { name: "Rock", value: "rock" },
+          { name: "Paper", value: "paper" },
+          { name: "Scissors", value: "scissors" },
+        ],
+      },
+    ],
+  },
 ];
 
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
