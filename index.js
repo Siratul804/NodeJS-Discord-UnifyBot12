@@ -15,13 +15,16 @@ const client = new Client({
 // Collection to hold commands
 client.commands = new Collection();
 
+// Load commands asynchronously
 async function loadCommands() {
   try {
     const commandDir = path.join(__dirname, "./commands");
     const files = await fs.readdir(commandDir);
 
+    // Filter for JavaScript files
     const commandFiles = files.filter((file) => file.endsWith(".js"));
 
+    // Load each command file
     for (const file of commandFiles) {
       const command = require(path.join(commandDir, file));
       client.commands.set(command.name, command);
@@ -33,12 +36,12 @@ async function loadCommands() {
   }
 }
 
-// Load commands and login
+// Load commands and log in the bot
 loadCommands().then(() => {
   client.login(process.env.DISCORD_TOKEN);
 });
 
-// Handle incoming messages
+// Handle incoming messages (for message-based commands)
 client.on("messageCreate", (message) => {
   if (message.author.bot) return;
 
@@ -60,7 +63,7 @@ client.on("messageCreate", (message) => {
   }
 });
 
-// Handle interactions like slash commands
+// Handle interactions (for slash commands)
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
 
@@ -71,7 +74,7 @@ client.on("interactionCreate", async (interaction) => {
       await command.execute(interaction);
     } catch (error) {
       console.error(error);
-      interaction.reply({
+      await interaction.reply({
         content: "There was an error executing that command.",
         ephemeral: true,
       });
