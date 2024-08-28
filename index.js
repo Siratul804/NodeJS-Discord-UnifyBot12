@@ -3,6 +3,15 @@ require("dotenv").config(); // Load environment variables from .env file
 const fs = require("fs").promises;
 const path = require("path");
 
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
+app.listen(3000, () => console.log("Server ready on port 3000."));
+
+module.exports = app;
+
 // Create a new client instance
 const client = new Client({
   intents: [
