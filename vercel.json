@@ -4,6 +4,30 @@
     {
       "src": "index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "commands/joke.js",
+      "use": "@vercel/node"
+    },
+     {
+      "src": "commands/hangman.js",
+      "use": "@vercel/node"
+    },
+     {
+      "src": "commands/meme.js",
+      "use": "@vercel/node"
+    },
+     {
+      "src": "commands/pink.js",
+      "use": "@vercel/node"
+    },
+     {
+      "src": "commands/rps.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "command.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
