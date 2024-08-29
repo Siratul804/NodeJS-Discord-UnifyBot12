@@ -2,6 +2,7 @@ const { Client, GatewayIntentBits, Collection } = require("discord.js");
 require("dotenv").config(); // Load environment variables from .env file
 const fs = require("fs").promises;
 const path = require("path");
+const keep_alive = require('./keep_alive.js')
 
 const express = require("express");
 const app = express();
